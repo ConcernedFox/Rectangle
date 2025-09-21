@@ -10,16 +10,10 @@ class Circle():
         self.width = 100
     def draw(self):
         pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius, self.width) 
-    def draw_again(self):
-        choice = input("Do you want a bigger circle?")
-        if choice == "yes":
-            pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius + self.radius, self.width)
-        elif choice == "no":
-            pygame.quit
-        else:
-            choice = input("Try again. Do you want a bigger circle? yes, or no")
+    def draw_again(self, radius):
+        self.radius = self.radius + radius
+        pygame.draw.circle(screen, self.color, (self.x, self.y), self.radius, self.width) 
 Vihaan_G = Circle()
-#Vihaan_G.draw_again()
 while True:
     for p in pygame.event.get():
         if p.type == pygame.QUIT:
@@ -28,5 +22,5 @@ while True:
             Vihaan_G.draw()
             pygame.display.update()
         elif p.type == pygame.MOUSEBUTTONUP:
-            Vihaan_G.draw_again()
+            Vihaan_G.draw_again(5)
             pygame.display.update()
